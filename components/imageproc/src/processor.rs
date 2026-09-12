@@ -120,7 +120,7 @@ impl ImageOp {
 
         match self.format {
             Format::Png => {
-                let mut encoder = PngEncoder::new(&mut tmp_output_writer);
+                let mut encoder = PngEncoder::new_with_quality(&mut tmp_output_writer, CompressionType::Best, FilterType::Adaptive);
                 add_color_profile(&mut encoder);
                 img.write_with_encoder(encoder)?;
             }
